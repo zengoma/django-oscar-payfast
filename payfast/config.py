@@ -39,9 +39,9 @@ class AbstractPayfastConfig:
         raise NotImplementedError
 
     def get_action_url(self):
-        """Get Payfast URL to post payment request form to.
+        """Get Payfast secret passphrase if set.
 
-        :return: Payfast gateway URL.
+        :return: Payfast secret passphrase if set.
         """
         raise NotImplementedError
 
