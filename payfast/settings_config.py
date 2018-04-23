@@ -30,13 +30,13 @@ class WebIntegrationConfig(AbstractPayfastConfig):
         # A check to see if only one of the required merchant settings was set
         if not all(merchant_settings) and any(merchant_settings):
             raise ImproperlyConfigured(
-                "You must declare both PAYFAST_MERCHANT_ID and PAYFAST_MERCHANT_KEY or neither in the settings module. You have declared only one of these settings, please check your settings module."
+                "You must declare both PAYFAST_MERCHANT_ID and PAYFAST_MERCHANT_KEY or neither in the settings module. "
+                "You have declared only one of these settings, please check your settings module."
             )
 
     def get_merchant_id(self):
         """Return :data:`PAYFAST_MERCHANT_ID`."""
         return getattr(settings, 'PAYFAST_MERCHANT_ID', Constants.MERCHANT_ID_DEV)
-
 
     def get_action_url(self):
         """Return :data:`PAYFAST_ACTION_URL`.
@@ -51,12 +51,10 @@ class WebIntegrationConfig(AbstractPayfastConfig):
         """Return :data:`PAYFAST_SECRET_KEY`."""
         return getattr(settings, 'PAYFAST_MERCHANT_KEY', Constants.MERCHANT_KEY_DEV)
 
-
     def get_passphrase(self):
         """Return :data:`PAYFAST_PASSPHRASE`. or None
         """
         return getattr(settings, 'PAYFAST_PASSPHRASE', None)
-
 
     def get_ip_address_header(self):
         """Return :data:`PAYFAST_IP_ADDRESS_HTTP_HEADER` or ``REMOTE_ADDR``.

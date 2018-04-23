@@ -1,7 +1,6 @@
-from payfast.facade import Facade
 from django.test import TestCase, RequestFactory
-#fixtures
 
+# fixtures
 PAYMENT_REQUEST_FORM = {
 
 }

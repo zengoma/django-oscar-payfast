@@ -26,7 +26,7 @@ class Constants:
     NOTIFY_URL = 'notify_url'
     PASSPHRASE = 'passphrase'
 
-    #Buyer details
+    # Buyer details
 
     NAME_FIRST = 'name_first'
     NAME_LAST = 'name_last'
@@ -49,7 +49,7 @@ class Constants:
 
     PAYMENT_METHOD = 'payment_method'
 
-    #Security
+    # Security
 
     SIGNATURE = 'signature'
     SIGNER = 'signer'
@@ -81,10 +81,7 @@ class Constants:
     VALIDATE_URL_LIVE = 'https://payfast.co.za/eng/query/validate'
     QUERY_URL_LIVE = 'https://api.payfast.co.za/process/query/'
 
-    #Payment results
+    # Payment results
 
     PAYMENT_RESULT_COMPLETE = 'COMPLETE'
     PAYMENT_RESULT_CANCELLED = 'CANCELLED'
-
-
-

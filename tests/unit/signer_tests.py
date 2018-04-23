@@ -43,8 +43,8 @@ UNSALTED_REQUEST_SIGNATURE = '34f4c69658c18d7a21327118f7b49ddf'
 SALTED_REQUEST_SIGNATURE = 'add40aee61b0ac8ca36c574f8680d9db'
 UNSALTED_RESPONSE_SIGNATURE = 'f1d22cff421688a6fe3bb97f2fef4a66'
 SALTED_RESPONSE_SIGNATURE = '44026fc49f1aeaa0eb1a25cbd64e484c'
-SAMPLE_HASH_SALTED = ''  # Generated using "the signature string"
-SAMPLE_HASH_UNSALTED = ''  # Generated using "the signature string"
+SAMPLE_HASH_SALTED = 'b0b185bb55a83232eb819c73cb7462d5'  # Generated using "the signature string"
+SAMPLE_HASH_UNSALTED = 'fcdd387314b6c7958a81bc0ed20443ec'  # Generated using "the signature string"
 
 
 class MD5SignerTestCase(TestCase):
@@ -54,12 +54,16 @@ class MD5SignerTestCase(TestCase):
 
     @override_settings(PAYFAST_PASSPHRASE=PASSPHRASE_SALT)
     def test_can_generate_a_hash(self):
-        generated_hash = self.md5signer.generate_hash('the signature string')
 
+        # Generate a salted hash with a passphrase
+        generated_hash = self.md5signer.generate_hash('the signature string')
         self.assertEqual(generated_hash, SAMPLE_HASH_SALTED)
+
         # Remove PAYFAST_PASSPHRASE from settings
         del settings.PAYFAST_PASSPHRASE
 
+        # Generate an unsalted hash without a passphrase
+        generated_hash = self.md5signer.generate_hash('the signature string')
         self.assertEqual(generated_hash, SAMPLE_HASH_UNSALTED)
 
     @override_settings(PAYFAST_PASSPHRASE=PASSPHRASE_SALT)

@@ -11,6 +11,7 @@ PAYFAST_MERCHANT_KEY = 'mysecretkey'
 PAYFAST_PASSPHRASE = 'mypassphrase'
 PAYFAST_IP_ADDRESS_HTTP_HEADER = 'X_FORWARDED_FOR'
 
+
 class ConfigTestCase(unittest.TestCase):
 
     @override_settings(PAYFAST_MERCHANT_KEY=PAYFAST_MERCHANT_KEY, PAYFAST_MERCHANT_ID=PAYFAST_MERCHANT_ID)
@@ -59,11 +60,10 @@ class ConfigTestCase(unittest.TestCase):
         self.assertEqual(get_config().get_merchant_id(), Constants.MERCHANT_ID_DEV,
                          "Cannot retrieve default development merchant id from Constants")
 
-
     @override_settings(PAYFAST_MERCHANT_KEY=PAYFAST_MERCHANT_KEY, PAYFAST_MERCHANT_ID=PAYFAST_MERCHANT_ID)
     def test_can_get_merchant_key(self):
         # Return the merchant key from the settings module
-        self.assertEqual(get_config().get_merchant_key(),PAYFAST_MERCHANT_KEY,
+        self.assertEqual(get_config().get_merchant_key(), PAYFAST_MERCHANT_KEY,
                          "Unable to retrieve merchant key from settings")
 
         # Remove PAYFAST_MERCHANT_KEY and PAYFAST_MERCHANT_ID from settings
@@ -73,7 +73,6 @@ class ConfigTestCase(unittest.TestCase):
         # Return the development key if PAYFAST_MERCHANT_KEY is not present in settings
         self.assertEqual(get_config().get_merchant_key(), Constants.MERCHANT_KEY_DEV,
                          "Cannot retrieve default development merchant key from Constants")
-
 
     @override_settings(PAYFAST_MERCHANT_KEY=PAYFAST_MERCHANT_KEY, PAYFAST_MERCHANT_ID=PAYFAST_MERCHANT_ID)
     def test_can_get_action_url(self):
@@ -98,7 +97,6 @@ class ConfigTestCase(unittest.TestCase):
         # Test if passphrase is None when not set in settings
         self.assertIsNone(get_config().get_passphrase(), "Passphrase does not default to none if")
 
-
     @override_settings(PAYFAST_IP_ADDRESS_HTTP_HEADER=PAYFAST_IP_ADDRESS_HTTP_HEADER)
     def test_can_get_ip_address_header(self):
         # Test if header can be retrieved from settings
@@ -111,9 +109,3 @@ class ConfigTestCase(unittest.TestCase):
         # Test if header is 'REMOTE_ADDR' when http header is not set
         self.assertEqual(get_config().get_ip_address_header(),
                          'REMOTE_ADDR', "Unable to get default http header REMOTE_ADDR if not in settings")
-
-
-
-
-
-

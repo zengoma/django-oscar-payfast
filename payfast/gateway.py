@@ -1,5 +1,4 @@
 import logging
-import socket
 from .constants import Constants
 from .exceptions import (
     InvalidTransactionException,

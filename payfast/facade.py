@@ -1,7 +1,5 @@
 # -*- coding: utf-8 -*-
-
 import logging
-import socket
 import iptools
 from oscar.core.loading import get_class
 from .signer import MD5Signer
