@@ -16,7 +16,7 @@ class WebIntegrationConfig(AbstractPayfastConfig):
     the payfast defaults:
 
     * :data:`PAYFAST_MERCHANT_ID`
-    * :data:`PAYFAST_SECRET_KEY`
+    * :data:`PAYFAST_MERCHANT_KEY`
 
     """
     def __init__(self):
@@ -48,7 +48,7 @@ class WebIntegrationConfig(AbstractPayfastConfig):
         return Constants.ACTION_URL_LIVE if merchant_id and merchant_key else Constants.ACTION_URL_DEV
 
     def get_merchant_key(self):
-        """Return :data:`PAYFAST_SECRET_KEY`."""
+        """Return :data:`PAYFAST_MERCHANT_KEY`."""
         return getattr(settings, 'PAYFAST_MERCHANT_KEY', Constants.MERCHANT_KEY_DEV)
 
     def get_passphrase(self):

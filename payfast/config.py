@@ -10,7 +10,8 @@ def get_config():
     By default, this function will return an instance of
     :class:`payfast.settings_config.WebIntegrationConfig`. If
     :data:`PAYFAST_CONFIG_CLASS` is defined, it will try to load this class and
-    return an instance of this class instead.
+    return an instance of this class instead. Currently there is only a single config
+    class. This can be used for future enhancements.
 
     .. note::
 
@@ -52,9 +53,9 @@ class AbstractPayfastConfig:
         raise NotImplementedError
 
     def get_merchant_key(self):
-        """Get Payfast merchant skin secret key.
+        """Get Payfast merchant key.
 
-        :return: Payfast merchant skin secret key.
+        :return: Payfast merchant key.
         """
         raise NotImplementedError
 
