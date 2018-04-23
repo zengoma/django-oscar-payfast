@@ -69,47 +69,6 @@ class AbstractSigner:
             response or by a payment notification.
         :return: ``True`` the ``fields`` contain valid signatures
         :rtype: ``boolean``
-
-        Payfast can secure communication with merchant site using signatures:
-
-        * ``merchantSig`` for the return URL,
-        * ``additionalData.hmacSignature`` for notification,
-
-        And this method can be used for both, provided with all the fields
-        as a flat ``dict``.
-
-        The following example is taken from the Payfast documentation::
-
-            {
-               "live":"false",
-               "notificationItems": [
-                  {
-                     "notificationRequestItem": {
-                        "additionalData": {
-                           "hmacSignature":"SIGN_KEY"
-                        },
-                        "amount": {
-                           "value":1130,
-                           "currency":"EUR"
-                        },
-                        "pspReference":"7914073381342284",
-                        # ... other fields
-                     }
-                  }
-               ]
-            }
-
-        The expected fields will be::
-
-            {
-                'additionalData.hmacSignature': 'SIGN_KEY',
-                'amount.value': 1130,
-                'amount.currency': 'EUR',
-                'pspReference: "7914073381342284"
-                # ... other fields
-            }
-
-        This format correspond to the ``POST`` notification format.
         """
         raise NotImplementedError
 

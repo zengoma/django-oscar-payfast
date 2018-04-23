@@ -1,6 +1,5 @@
 from django.conf import settings
 from django.core.exceptions import ImproperlyConfigured
-
 from .config import AbstractPayfastConfig
 from .constants import Constants
 
